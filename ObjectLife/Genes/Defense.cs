@@ -8,5 +8,9 @@ namespace ObjectLife.Genes
 {
     class Defense : Gene
     {
+        public override void DoIt()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

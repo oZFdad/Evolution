@@ -1,4 +1,5 @@
 ﻿
+using System;
 using ObjectLife;
 using PainBox_DLL;
 using System.Windows.Forms;
@@ -9,6 +10,7 @@ namespace Evolution
     {
         private Grid[,] _grid;
         private Organism [] _organismList = new Organism[64];
+        private Eat [] _eats = new Eat[200];
 
         public Form1()
         {
@@ -32,5 +34,6 @@ namespace Evolution
                 }
             }
         }
+
     }
 }

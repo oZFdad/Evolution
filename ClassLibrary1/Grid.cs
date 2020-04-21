@@ -1,10 +1,20 @@
 ﻿
+using System;
 using System.Drawing;
+using ObjectLife;
 
 namespace PainBox_DLL
 {
     public class Grid
     {
+        private Obj _obj;
+
+        public Obj Obj
+        {
+            get => _obj;
+            set => _obj = value;
+        }
+
         private int _x;
         private int _y;
 

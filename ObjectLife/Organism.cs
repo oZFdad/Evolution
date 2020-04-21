@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ObjectLife
 {
-    public class Organism
+    public class Organism : Obj
     {
         private Gene[] _DNA = new Gene[32];
         private State _state;

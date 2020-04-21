@@ -45,5 +45,11 @@
     <Compile Include="Grid.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ObjectLife\ObjectLife.csproj">
+      <Project>{3fef6230-0336-4b89-9043-8ad52f34f2f4}</Project>
+      <Name>ObjectLife</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,5 +8,9 @@ namespace ObjectLife.Genes
 {
     class GoLeft : Gene
     {
+        public override void DoIt()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

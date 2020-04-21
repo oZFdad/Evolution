@@ -8,5 +8,9 @@ namespace ObjectLife.Genes
 {
     class GoUp : Gene
     {
+        public override void DoIt()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
