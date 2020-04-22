@@ -21,7 +21,7 @@ namespace ObjectLife.DrawerTools
         {
             if (element.GetType() == typeof(Eat))
             {
-                return new SolidBrush(Color.Brown);
+                return new SolidBrush(Color.Gray);
             }
             var hits = element.State.Life;
             if (hits > 66)

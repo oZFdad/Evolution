@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.painBox = new System.Windows.Forms.PictureBox();
+            this.btCheckPoint = new System.Windows.Forms.Button();
+            this.btStart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.painBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,11 +46,33 @@
             this.painBox.TabStop = false;
             this.painBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
+            // btCheckPoint
+            // 
+            this.btCheckPoint.Location = new System.Drawing.Point(854, 41);
+            this.btCheckPoint.Name = "btCheckPoint";
+            this.btCheckPoint.Size = new System.Drawing.Size(75, 23);
+            this.btCheckPoint.TabIndex = 1;
+            this.btCheckPoint.Text = "CheckPoint";
+            this.btCheckPoint.UseVisualStyleBackColor = true;
+            this.btCheckPoint.Click += new System.EventHandler(this.btCheckPoint_Click);
+            // 
+            // btStart
+            // 
+            this.btStart.Location = new System.Drawing.Point(854, 81);
+            this.btStart.Name = "btStart";
+            this.btStart.Size = new System.Drawing.Size(75, 23);
+            this.btStart.TabIndex = 2;
+            this.btStart.Text = "Start";
+            this.btStart.UseVisualStyleBackColor = true;
+            this.btStart.Click += new System.EventHandler(this.btStart_Click);
+            // 
             // Evolution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 861);
+            this.Controls.Add(this.btStart);
+            this.Controls.Add(this.btCheckPoint);
             this.Controls.Add(this.painBox);
             this.Name = "Evolution";
             this.Text = "Evolution";
@@ -61,6 +85,8 @@
         #endregion
 
         private System.Windows.Forms.PictureBox painBox;
+        private System.Windows.Forms.Button btCheckPoint;
+        private System.Windows.Forms.Button btStart;
     }
 }
 

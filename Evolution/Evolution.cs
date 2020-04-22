@@ -1,8 +1,6 @@
-﻿
-using System;
-using Evolution_DLL.World;
-using System.Windows.Forms;
+﻿using Evolution_DLL.World;
 using ObjectLife.DrawerTools;
+using System.Windows.Forms;
 
 namespace Evolution
 {
@@ -23,6 +21,17 @@ namespace Evolution
 
         private void Evolution_MouseDown(object sender, MouseEventArgs e)
         {
+            painBox.Refresh();
+        }
+
+        private void btCheckPoint_Click(object sender, System.EventArgs e)
+        {
+            int a = 0;
+        }
+
+        private void btStart_Click(object sender, System.EventArgs e)
+        {
+            _world.GameStart();
             painBox.Refresh();
         }
     }

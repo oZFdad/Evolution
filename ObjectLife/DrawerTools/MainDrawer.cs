@@ -1,4 +1,5 @@
-﻿using Evolution_DLL.World;
+﻿using Evolution_DLL;
+using Evolution_DLL.World;
 using PainBox_DLL;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,8 @@ namespace ObjectLife.DrawerTools
 
         private void SizeError()
         {
-            if(_size.Width < _gameProcese.ThisWorld.Count * _gameProcese.ThisWorld.CellSize || _size.Height < _gameProcese.ThisWorld.Count * _gameProcese.ThisWorld.CellSize)
+            var options = new Specification();
+            if (_size.Width < options.CountField * options.SizeCell || _size.Height < options.CountField * options.SizeCell)
             {
                 MessageBox.Show("Размеры поля меньше минимально необходимых, пожалуйста увеличте размер окна", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }

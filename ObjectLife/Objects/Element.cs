@@ -7,5 +7,6 @@ namespace Evolution_DLL
         protected State _state;
 
         internal State State { get => _state; set => _state = value; }
+
     }
 }

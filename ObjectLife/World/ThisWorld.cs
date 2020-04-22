@@ -5,23 +5,36 @@ namespace Evolution_DLL.World
 {
     internal class ThisWorld
     {
-        private const int _count = 80;
-        private const int _cellSize = 10;
-
-        private Cell[,] _field = new Cell[_count, _count];
-
-        public int Count => _count;
-        public int CellSize => _cellSize;
-
+        private Cell[,] _field;
+        
         internal ThisWorld()
         {
-            for(var i = 0; i < _count; i++)
+            var options = new Specification();
+            _field = new Cell[options.CountField, options.CountField];
+            for (var i = 0; i < options.CountField; i++)
             {
-                for(var j = 0; j < _count; j++)
+                for(var j = 0; j < options.CountField; j++)
                 {
-                    _field[i, j] = new Cell(new Point(i * 10, j * 10), new Size(_cellSize, _cellSize));
+                    _field[i, j] = new Cell(new Point(i * 10, j * 10), new Size(options.SizeCell, options.SizeCell));
                 }
             }
+        }
+
+        internal bool CheckFreeSpace(int x, int y)
+        {
+            if (_field[x, y].Element == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        internal Cell GetCell (int x, int y)
+        {
+            return _field[x, y];
         }
     }
 }

@@ -10,16 +10,17 @@ namespace PainBox_DLL
     {
         internal static void Draw (Graphics graphics, Size size, ThisWorld thisWorld)
         {
+            var options = new Specification();
             var pen = new Pen(Color.Black);
 
-            for (var i = 0; i <= thisWorld.Count; i++)
+            for (var i = 0; i <= options.CountField; i++)
             {
-                graphics.DrawLine(pen, i * thisWorld.CellSize, 0, i * thisWorld.CellSize, thisWorld.Count * thisWorld.CellSize);
+                graphics.DrawLine(pen, i * options.SizeCell, 0, i * options.SizeCell, options.CountField * options.SizeCell);
             }
 
-            for (var i = 0; i <= thisWorld.Count; i++)
+            for (var i = 0; i <= options.CountField; i++)
             {
-                graphics.DrawLine(pen, 0, i * thisWorld.CellSize, thisWorld.Count * thisWorld.CellSize, i * thisWorld.CellSize);
+                graphics.DrawLine(pen, 0, i * options.SizeCell, options.CountField * options.SizeCell, i * options.SizeCell);
             }
         }
     }

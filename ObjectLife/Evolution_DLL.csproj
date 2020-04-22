@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Specification.cs" />
     <Compile Include="DrawerTools\CellDrawer.cs" />
     <Compile Include="DrawerTools\FieldDrawer.cs" />
     <Compile Include="DrawerTools\MainDrawer.cs" />
@@ -66,6 +67,9 @@
     <Compile Include="World\Cell.cs" />
     <Compile Include="World\GameProcese.cs" />
     <Compile Include="World\ThisWorld.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Actions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
