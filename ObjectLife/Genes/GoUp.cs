@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectLife.Genes
+namespace Evolution_DLL.Genes
 {
-    class GoUp : Gene
+    internal class GoUp : Gene
     {
         public override void DoIt()
         {

@@ -1,6 +1,6 @@
 ﻿namespace Evolution
 {
-    partial class Form1
+    partial class Evolution
     {
         /// <summary>
         /// Обязательная переменная конструктора.
@@ -44,14 +44,15 @@
             this.painBox.TabStop = false;
             this.painBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
             // 
-            // Form1
+            // Evolution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 861);
             this.Controls.Add(this.painBox);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Evolution";
+            this.Text = "Evolution";
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Evolution_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.painBox)).EndInit();
             this.ResumeLayout(false);
 

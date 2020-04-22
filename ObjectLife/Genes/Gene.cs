@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ObjectLife
+namespace Evolution_DLL
 {
-    public abstract class Gene
+    internal abstract class Gene
     {
         public abstract void DoIt();
     }

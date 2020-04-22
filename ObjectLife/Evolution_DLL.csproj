@@ -33,6 +33,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,7 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Eat.cs" />
+    <Compile Include="DrawerTools\CellDrawer.cs" />
+    <Compile Include="DrawerTools\FieldDrawer.cs" />
+    <Compile Include="DrawerTools\MainDrawer.cs" />
+    <Compile Include="Objects\Eat.cs" />
     <Compile Include="Genes\AttackDawn.cs" />
     <Compile Include="Genes\AttackLeft.cs" />
     <Compile Include="Genes\AttackRight.cs" />
@@ -53,10 +58,14 @@
     <Compile Include="Genes\GoRight.cs" />
     <Compile Include="Genes\GoUp.cs" />
     <Compile Include="Genes\Scout.cs" />
-    <Compile Include="Obj.cs" />
-    <Compile Include="Organism.cs" />
+    <Compile Include="Objects\Element.cs" />
+    <Compile Include="Objects\Organism.cs" />
+    <Compile Include="Objects\StorageForElements.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="State.cs" />
+    <Compile Include="Objects\State.cs" />
+    <Compile Include="World\Cell.cs" />
+    <Compile Include="World\GameProcese.cs" />
+    <Compile Include="World\ThisWorld.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
