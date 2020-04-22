@@ -1,7 +1,8 @@
-﻿using Evolution_DLL.Objects;
-using ObjectLife.World;
+﻿using Evolution_DLL.Actions;
+using Evolution_DLL.Objects;
+using System.Windows.Forms;
 using System;
-using System.Drawing;
+using System.Threading;
 
 namespace Evolution_DLL.World
 {
@@ -9,6 +10,7 @@ namespace Evolution_DLL.World
     {
         private StorageForElements _storageElements;
         private ThisWorld _thisWorld;
+        private int _round;
 
         internal ThisWorld ThisWorld { get => _thisWorld; }
         internal StorageForElements StorageElements { get => _storageElements; }
@@ -17,12 +19,14 @@ namespace Evolution_DLL.World
         {
             _storageElements = new StorageForElements();
             _thisWorld = new ThisWorld();
+            _round = 0;
         }
 
         public void GameStart()
         {
             FillLife();
             CreatDNA();
+            GoAction();
         }
 
         private void FillLife()
@@ -65,14 +69,28 @@ namespace Evolution_DLL.World
 
         private void CreatDNA()
         {
-            foreach(var element in _storageElements.GetElementsList())
+            foreach(var organism in _storageElements.GetOrganismsList())
             {
-                if (element.GetType() == typeof(Organism))
-                {
-                    Organism organism = (Organism)element;
-                    organism.CreatDNA();
-                }
+                organism.CreatDNA();
             }
+        }
+
+        private void GoAction()
+        {
+            var options = new Specification();
+            var pointer = _round % options.DNAcount;
+            foreach (var organism in _storageElements.GetOrganismsList())
+            {
+                var action = Separater.GetAction(organism.GetGene(pointer));
+                action.Action(organism, _thisWorld);
+            }
+            Update();
+            Thread.Sleep(500);
+            _round++;
+        }
+
+        private void Update()
+        {
         }
     }
 }

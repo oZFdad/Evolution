@@ -1,4 +1,5 @@
-﻿using ObjectLife.World;
+﻿using Evolution_DLL.Objects;
+using Evolution_DLL.World;
 using System.Drawing;
 
 namespace Evolution_DLL.World
@@ -35,6 +36,11 @@ namespace Evolution_DLL.World
         internal Cell GetCell (int x, int y)
         {
             return _field[x, y];
+        }
+
+        internal Element CheckField (Cell cell, int x, int y)
+        {
+            return _field[cell.Point.X / 10 + x, cell.Point.Y / 10 + y].Element;
         }
     }
 }

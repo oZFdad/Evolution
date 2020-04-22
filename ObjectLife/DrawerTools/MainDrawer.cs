@@ -1,12 +1,11 @@
 ﻿using Evolution_DLL;
 using Evolution_DLL.World;
-using PainBox_DLL;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ObjectLife.DrawerTools
+namespace Evolution_DLL.DrawerTools
 {
     public class MainDrawer
     {

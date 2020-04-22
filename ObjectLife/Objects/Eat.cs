@@ -1,4 +1,4 @@
-namespace Evolution_DLL
+namespace Evolution_DLL.Objects
 {
     internal class Eat : Element
     {

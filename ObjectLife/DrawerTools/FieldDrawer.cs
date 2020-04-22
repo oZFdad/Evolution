@@ -1,10 +1,7 @@
-﻿
-using System;
-using System.Drawing;
-using Evolution_DLL;
+﻿using System.Drawing;
 using Evolution_DLL.World;
 
-namespace PainBox_DLL
+namespace Evolution_DLL.DrawerTools
 {
     internal static class FieldDrawer
     {

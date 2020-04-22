@@ -1,12 +1,7 @@
-﻿using Evolution_DLL;
-using System;
-using System.Collections.Generic;
+﻿using Evolution_DLL.Objects;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ObjectLife.World
+namespace Evolution_DLL.World
 {
     internal class Cell
     {
@@ -28,6 +23,11 @@ namespace ObjectLife.World
         internal Rectangle GetRectangle()
         {
             return new Rectangle(_point, _size);
+        }
+
+        internal void Checkneighbour()
+        {
+
         }
     }
 }

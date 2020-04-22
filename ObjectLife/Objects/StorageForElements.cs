@@ -1,5 +1,4 @@
-﻿
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Evolution_DLL.Objects
 {
@@ -7,14 +6,28 @@ namespace Evolution_DLL.Objects
     {
         private List<Element> _elementsList = new List<Element>();
 
-        public List<Element> GetElementsList()
+        internal List<Element> GetElementsList()
         {
             return _elementsList;
         }
 
-        public void AddElements (Element element)
+        internal void AddElements (Element element)
         {
             _elementsList.Add(element);
+        }
+
+        internal List<Organism> GetOrganismsList()
+        {
+            var organismsList = new List<Organism>();
+            foreach (var element in _elementsList)
+            {
+                if (element.GetType() == typeof(Organism))
+                {
+                    Organism organism = (Organism)element;
+                    organismsList.Add(organism);
+                }
+            }
+            return organismsList;
         }
     }
 }

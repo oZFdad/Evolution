@@ -1,6 +1,6 @@
-﻿using ObjectLife.World;
+﻿using Evolution_DLL.World;
 
-namespace Evolution_DLL
+namespace Evolution_DLL.Objects
 {
     internal class State
     {
@@ -12,8 +12,21 @@ namespace Evolution_DLL
 
         public State()
         {
-            Life = 100;
+            var options = new Specification();
+            Life = options.OrganismLife;
             Cell = null;
+        }
+
+        internal void UpLifeFromEat()
+        {
+            var options = new Specification();
+            _life += options.LifeFromEat;
+        }
+
+        internal void UpLifeFromOrganism()
+        {
+            var options = new Specification();
+            _life += options.LifeFromOrganism;
         }
     }
 }

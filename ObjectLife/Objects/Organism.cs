@@ -1,22 +1,25 @@
-﻿
-
-using Evolution_DLL.Genes;
+﻿using Evolution_DLL.Genes;
 using System;
 
-namespace Evolution_DLL
+namespace Evolution_DLL.Objects
 {
     internal class Organism : Element
     {
-        private Gene[] _DNA = new Gene[32];
+        private Gene[] _DNA;
         private bool _defense;
         private bool _scout;
 
         public Organism()
         {
+            var options = new Specification();
+            _DNA = new Gene[options.DNAcount];
             _state = new State();
             _defense = false;
             _scout = false;
         }
+
+        public bool Defense { get => _defense; set => _defense = value; }
+        public bool Scout { get => _scout; set => _scout = value; }
 
         internal void CreatDNA()
         {
@@ -62,6 +65,11 @@ namespace Evolution_DLL
                 }
                 _DNA[i] = gene;
             }
+        }
+
+        internal Gene GetGene (int num)
+        {
+            return _DNA[num];
         }
     }   
 }

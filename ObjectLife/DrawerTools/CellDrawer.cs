@@ -1,8 +1,8 @@
-﻿using Evolution_DLL;
+﻿using Evolution_DLL.Objects;
 using Evolution_DLL.World;
 using System.Drawing;
 
-namespace ObjectLife.DrawerTools
+namespace Evolution_DLL.DrawerTools
 {
     internal class CellDrawer
     {
