@@ -34,5 +34,11 @@ namespace Evolution
             _world.GameStart();
             painBox.Refresh();
         }
+
+        private void btNext_Click(object sender, System.EventArgs e)
+        {
+            _world.NextIteration();
+            painBox.Refresh();
+        }
     }
 }

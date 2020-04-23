@@ -26,6 +26,10 @@ namespace Evolution_DLL.World
         {
             FillLife();
             CreatDNA();
+        }
+
+        public void NextIteration()
+        {
             GoAction();
         }
 

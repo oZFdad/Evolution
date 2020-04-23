@@ -31,6 +31,7 @@
             this.painBox = new System.Windows.Forms.PictureBox();
             this.btCheckPoint = new System.Windows.Forms.Button();
             this.btStart = new System.Windows.Forms.Button();
+            this.btNext = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.painBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,11 +67,22 @@
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
             // 
+            // btNext
+            // 
+            this.btNext.Location = new System.Drawing.Point(854, 111);
+            this.btNext.Name = "btNext";
+            this.btNext.Size = new System.Drawing.Size(75, 23);
+            this.btNext.TabIndex = 3;
+            this.btNext.Text = "Next";
+            this.btNext.UseVisualStyleBackColor = true;
+            this.btNext.Click += new System.EventHandler(this.btNext_Click);
+            // 
             // Evolution
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 861);
+            this.Controls.Add(this.btNext);
             this.Controls.Add(this.btStart);
             this.Controls.Add(this.btCheckPoint);
             this.Controls.Add(this.painBox);
@@ -87,6 +99,7 @@
         private System.Windows.Forms.PictureBox painBox;
         private System.Windows.Forms.Button btCheckPoint;
         private System.Windows.Forms.Button btStart;
+        private System.Windows.Forms.Button btNext;
     }
 }
 
