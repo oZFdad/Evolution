@@ -29,5 +29,10 @@ namespace Evolution_DLL.Objects
             }
             return organismsList;
         }
+
+        internal void DeleteElement(Element element)
+        {
+            _elementsList.Remove(element);
+        }
     }
 }

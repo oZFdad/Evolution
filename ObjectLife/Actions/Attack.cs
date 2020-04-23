@@ -14,23 +14,24 @@ namespace Evolution_DLL.Actions
             _y = y;
         }
 
-        internal override void Action(Organism organism, ThisWorld thisWorld)
+        internal override void Action(Organism organism, ThisWorld thisWorld, StorageForElements storageForElements)
         {
+            organism.Defense = false;
             if (organism.Scout)
             {
                 organism.Scout = false;
-                HelpAction(organism, thisWorld, -1, 0);
-                HelpAction(organism, thisWorld, 1, 0);
-                HelpAction(organism, thisWorld, 0, -1);
-                HelpAction(organism, thisWorld, 0, 1);
+                HelpAction(organism, thisWorld, -1, 0, storageForElements);
+                HelpAction(organism, thisWorld, 1, 0, storageForElements);
+                HelpAction(organism, thisWorld, 0, -1, storageForElements);
+                HelpAction(organism, thisWorld, 0, 1, storageForElements);
             }
             else
             {
-                HelpAction(organism, thisWorld, _x, _y);
+                HelpAction(organism, thisWorld, _x, _y, storageForElements);
             }
         }
 
-        private void HelpAction(Organism organism, ThisWorld thisWorld, int x, int y)
+        private void HelpAction(Organism organism, ThisWorld thisWorld, int x, int y, StorageForElements storageForElements)
         {
             var element = thisWorld.CheckField(organism.State.Cell, x, y);
             if (element != null)
@@ -39,11 +40,20 @@ namespace Evolution_DLL.Actions
                 {
                     organism.State.UpLifeFromEat();
                 }
-                else
+                if(element.GetType()==typeof(Organism))
                 {
+                    var bufOrganism = (Organism)element;
+                    if (bufOrganism.Defense)
+                    {
+                        return;
+                    }
                     organism.State.UpLifeFromOrganism();
                 }
+                
+                element.State.Cell.Element = null;
+                storageForElements.DeleteElement(element);
                 element = null;
+                
             }
         }
     }

@@ -2,6 +2,7 @@
 using Evolution_DLL.Objects;
 using System.Windows.Forms;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 
 namespace Evolution_DLL.World
@@ -11,6 +12,9 @@ namespace Evolution_DLL.World
         private StorageForElements _storageElements;
         private ThisWorld _thisWorld;
         private int _round;
+        
+        public delegate void EventHandler();
+        public event EventHandler EventChange;
 
         internal ThisWorld ThisWorld { get => _thisWorld; }
         internal StorageForElements StorageElements { get => _storageElements; }
@@ -73,28 +77,45 @@ namespace Evolution_DLL.World
 
         private void CreatDNA()
         {
+            var rnd = new Random();
             foreach(var organism in _storageElements.GetOrganismsList())
             {
-                organism.CreatDNA();
+                organism.CreatDNA(rnd);
             }
         }
 
         private void GoAction()
         {
             var options = new Specification();
-            var pointer = _round % options.DNAcount;
-            foreach (var organism in _storageElements.GetOrganismsList())
+            while (_round < options.GameLimit)
             {
-                var action = Separater.GetAction(organism.GetGene(pointer));
-                action.Action(organism, _thisWorld);
+                var pointer = _round % options.DNAcount;
+                foreach (var organism in _storageElements.GetOrganismsList())
+                {
+                    if (!organism.IsLife())
+                    {
+                        _storageElements.DeleteElement((organism));
+                        organism.State.Cell.Element = null;
+                    }
+                    var action = Separater.GetAction(organism.GetGene(pointer));
+                    action.Action(organism, _thisWorld, _storageElements);
+                    EventChange?.Invoke();
+                    Thread.Sleep(options.Delay);
+                }
+                _round++;
             }
-            Update();
-            Thread.Sleep(500);
-            _round++;
+
+            _round = 0;
         }
 
-        private void Update()
+        public string GerInfo()
         {
+            return "Живых организмов - " + Convert.ToString(_storageElements.GetOrganismsList().Count);
+        }
+
+        public List<int> GetFullCells()
+        {
+            return _thisWorld.Free();
         }
     }
 }

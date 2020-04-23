@@ -1,5 +1,6 @@
 ﻿using Evolution_DLL.Genes;
 using System;
+using System.Threading;
 
 namespace Evolution_DLL.Objects
 {
@@ -21,9 +22,8 @@ namespace Evolution_DLL.Objects
         public bool Defense { get => _defense; set => _defense = value; }
         public bool Scout { get => _scout; set => _scout = value; }
 
-        internal void CreatDNA()
+        internal void CreatDNA(Random rnd)
         {
-            var rnd = new Random();
             for(var i = 0; i < _DNA.Length; i++)
             {
                 Gene gene;
@@ -70,6 +70,23 @@ namespace Evolution_DLL.Objects
         internal Gene GetGene (int num)
         {
             return _DNA[num];
+        }
+
+        public bool IsLife()
+        {
+            Scout = false;
+            var options = new Specification();
+            if (Defense)
+            {
+                _defense = false;
+                State.Life -= options.LifeForRoundInDefebse;
+            }
+            else
+            {
+                State.Life -= options.LifeForRound;
+            }
+
+            return State.Life >= 1;
         }
     }   
 }

@@ -7,10 +7,18 @@ namespace Evolution
     public partial class Evolution : Form
     {
         private GameProcese _world = new GameProcese();
+        
 
         public Evolution()
         {
             InitializeComponent();
+            _world.EventChange += WorldOnEventChange;
+        }
+
+        private void WorldOnEventChange()
+        {
+            lbState.Text = _world.GerInfo();
+            painBox.Refresh();
         }
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
@@ -26,6 +34,7 @@ namespace Evolution
 
         private void btCheckPoint_Click(object sender, System.EventArgs e)
         {
+            var b = _world.GetFullCells();
             int a = 0;
         }
 

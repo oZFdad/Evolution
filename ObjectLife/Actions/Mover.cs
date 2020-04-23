@@ -15,15 +15,18 @@ namespace Evolution_DLL.Actions
             _y = y;
         }
 
-        internal override void Action(Organism organism, ThisWorld thisWorld)
+        internal override void Action(Organism organism, ThisWorld thisWorld, StorageForElements storageForElements)
         {
+            var options = new Specification();
             var element = thisWorld.CheckField(organism.State.Cell, _x, _y);
             if (element == null)
             {
                 element = organism;
                 organism.State.Cell.Element = null;
-                organism.State.Cell = thisWorld.GetCell(organism.State.Cell.Point.X + _x, organism.State.Cell.Point.Y + _y);
+                organism.State.Cell = thisWorld.GetCell(organism.State.Cell.Point.X / options.SizeCell + _x, organism.State.Cell.Point.Y / options.SizeCell + _y);
             }
+            organism.Defense = false;
+            organism.Scout = false;
         }
     }
 }

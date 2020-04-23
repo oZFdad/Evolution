@@ -5,6 +5,6 @@ namespace Evolution_DLL.Actions
 {
     internal abstract class ActionAbstract
     {
-        internal abstract void Action(Organism organism, ThisWorld thisWorld);
+        internal abstract void Action(Organism organism, ThisWorld thisWorld, StorageForElements storageForElements);
     }
 }
