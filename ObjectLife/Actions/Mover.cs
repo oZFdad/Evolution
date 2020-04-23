@@ -21,7 +21,8 @@ namespace Evolution_DLL.Actions
             var element = thisWorld.CheckField(organism.State.Cell, _x, _y);
             if (element == null)
             {
-                element = organism;
+                var cell = thisWorld.GetCell(organism.State.Cell.Point.X / options.SizeCell + _x, organism.State.Cell.Point.Y / options.SizeCell + _y);
+                cell.Element = organism;
                 organism.State.Cell.Element = null;
                 organism.State.Cell = thisWorld.GetCell(organism.State.Cell.Point.X / options.SizeCell + _x, organism.State.Cell.Point.Y / options.SizeCell + _y);
             }

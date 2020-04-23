@@ -94,11 +94,14 @@ namespace Evolution_DLL.World
                 {
                     if (!organism.IsLife())
                     {
-                        _storageElements.DeleteElement((organism));
+                        _storageElements.DeleteElement(organism);
                         organism.State.Cell.Element = null;
                     }
-                    var action = Separater.GetAction(organism.GetGene(pointer));
-                    action.Action(organism, _thisWorld, _storageElements);
+                    else
+                    {
+                        var action = Separater.GetAction(organism.GetGene(pointer));
+                        action.Action(organism, _thisWorld, _storageElements);
+                    }
                     EventChange?.Invoke();
                     Thread.Sleep(options.Delay);
                 }

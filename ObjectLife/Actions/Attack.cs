@@ -33,6 +33,7 @@ namespace Evolution_DLL.Actions
 
         private void HelpAction(Organism organism, ThisWorld thisWorld, int x, int y, StorageForElements storageForElements)
         {
+            var options = new Specification();
             var element = thisWorld.CheckField(organism.State.Cell, x, y);
             if (element != null)
             {
@@ -52,8 +53,6 @@ namespace Evolution_DLL.Actions
                 
                 element.State.Cell.Element = null;
                 storageForElements.DeleteElement(element);
-                element = null;
-                
             }
         }
     }

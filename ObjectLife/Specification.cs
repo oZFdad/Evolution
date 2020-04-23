@@ -3,9 +3,9 @@ namespace Evolution_DLL
 {
     internal class Specification
     {
-        private int _amountOfFood = 200; //200 default
-        private int _numberOfOrganism = 64; //64 default
-        private int _countField = 80; // 80 default
+        private int _amountOfFood = 0; //200 default
+        private int _numberOfOrganism = 16; //64 default
+        private int _countField = 20; // 80 default
         private int _sizeCell = 10;
         private int _DNAcount = 64;
         private int _organismLife = 100;
