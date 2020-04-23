@@ -80,11 +80,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ObjectLife\Evolution_DLL.csproj">
-      <Project>{3FEF6230-0336-4B89-9043-8AD52F34F2F4}</Project>
+    <ProjectReference Include="..\Evolution_DLL\Evolution_DLL.csproj">
+      <Project>{3fef6230-0336-4b89-9043-8ad52f34f2f4}</Project>
       <Name>Evolution_DLL</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

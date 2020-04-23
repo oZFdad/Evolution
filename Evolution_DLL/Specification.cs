@@ -3,8 +3,8 @@ namespace Evolution_DLL
 {
     internal class Specification
     {
-        private int _amountOfFood = 200; //количество еды
-        private int _numberOfOrganism = 16; //количество организмов
+        private int _amountOfFood = 400; //количество еды
+        private int _numberOfOrganism = 64; //количество организмов
         private int _countField = 40; // размер поля
         private int _sizeCell = 15;//размер ячейки
         private int _DNAcount = 64;//длина ДНК
