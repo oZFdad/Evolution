@@ -8,7 +8,7 @@ namespace Evolution_DLL.DrawerTools
     {
         internal static void Draw(Graphics graphic, GameProcese gameProcese)
         {
-            foreach(var element in gameProcese.StorageElements.GetElementsList())
+            foreach(var element in gameProcese.ThisWorld.StorageElements.GetElementsList())
             {
                 if(element.State.Cell != null)
                 {

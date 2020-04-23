@@ -5,6 +5,8 @@ namespace Evolution_DLL.World
 {
     internal class Cell
     {
+        private int _x;
+        private int _y;
         private Point _point;
         private Size _size;
         private Element _element;
@@ -13,10 +15,17 @@ namespace Evolution_DLL.World
         public Size Size { get => _size; set => _size = value; }
         internal Element Element { get => _element; set => _element = value; }
 
-        internal Cell(Point point, Size size)
+        public int X => _x;
+
+        public int Y => _y;
+
+        internal Cell(int x, int y)
         {
-            _point = point;
-            _size = size;
+            var options = new Specification();
+            _x = x;
+            _y = y;
+            _point = new Point(x * options.SizeCell, y * options.SizeCell);
+            _size = new Size(options.SizeCell, options.SizeCell);
             _element = null;
         }
 

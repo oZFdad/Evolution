@@ -50,9 +50,7 @@ namespace Evolution_DLL.Actions
                     }
                     organism.State.UpLifeFromOrganism();
                 }
-                
-                element.State.Cell.Element = null;
-                storageForElements.DeleteElement(element);
+                thisWorld.DeleteElement(element);
             }
         }
     }

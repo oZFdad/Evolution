@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Evolution_DLL.Objects;
-using Evolution_DLL.World;
 using System.Drawing;
 
 namespace Evolution_DLL.World
@@ -8,6 +7,9 @@ namespace Evolution_DLL.World
     internal class ThisWorld
     {
         private Cell[,] _field;
+        private StorageForElements _storageElements;
+        
+        internal StorageForElements StorageElements { get => _storageElements; }
         
         internal ThisWorld()
         {
@@ -17,9 +19,10 @@ namespace Evolution_DLL.World
             {
                 for(var j = 0; j < options.CountField; j++)
                 {
-                    _field[i, j] = new Cell(new Point(i * 10, j * 10), new Size(options.SizeCell, options.SizeCell));
+                    _field[i, j] = new Cell(i,j);
                 }
             }
+            _storageElements = new StorageForElements();
         }
 
         internal bool CheckFreeSpace(int x, int y)
@@ -88,9 +91,15 @@ namespace Evolution_DLL.World
 
             return _field[x, y].Element;
         }
+
+        internal void DeleteElement(Element element)
+        {
+            _storageElements.DeleteElement(element);
+            _field[element.State.Cell.X, element.State.Cell.Y].Element = null;
+        }
         
 
-        internal List<int> Free()
+        internal List<int> Free() // мусор
         {
             var list = new List<int>();
             var options = new Specification();

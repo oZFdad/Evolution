@@ -13,7 +13,7 @@ namespace Evolution_DLL.Objects
         public State()
         {
             var options = new Specification();
-            Life = options.OrganismLife;
+            Life = options.OrganismDefaultLife;
             Cell = null;
         }
 
@@ -21,12 +21,20 @@ namespace Evolution_DLL.Objects
         {
             var options = new Specification();
             _life += options.LifeFromEat;
+            if (_life > options.OrganismMaxLife)
+            {
+                _life = options.OrganismMaxLife;
+            }
         }
 
         internal void UpLifeFromOrganism()
         {
             var options = new Specification();
             _life += options.LifeFromOrganism;
+            if (_life > options.OrganismMaxLife)
+            {
+                _life = options.OrganismMaxLife;
+            }
         }
     }
 }
