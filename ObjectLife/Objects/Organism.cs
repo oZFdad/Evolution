@@ -22,6 +22,8 @@ namespace Evolution_DLL.Objects
         public bool Defense { get => _defense; set => _defense = value; }
         public bool Scout { get => _scout; set => _scout = value; }
 
+        public Gene[] Dna => _DNA;
+
         internal void CreatDNA(Random rnd)
         {
             for(var i = 0; i < _DNA.Length; i++)

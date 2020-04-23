@@ -23,7 +23,7 @@ namespace Evolution_DLL.Objects
             {
                 if (element.GetType() == typeof(Organism))
                 {
-                    Organism organism = (Organism)element;
+                    var organism = (Organism)element;
                     organismsList.Add(organism);
                 }
             }
@@ -33,6 +33,20 @@ namespace Evolution_DLL.Objects
         internal void DeleteElement(Element element)
         {
             _elementsList.Remove(element);
+        }
+
+        public List<Eat> GetEatList()
+        {
+            var eatsList = new List<Eat>();
+            foreach (var element in _elementsList)
+            {
+                if (element.GetType() == typeof(Eat))
+                {
+                    var eat = (Eat)element;
+                    eatsList.Add(eat);
+                }
+            }
+            return eatsList;
         }
     }
 }

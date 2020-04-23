@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.Threading;
+using Evolution_DLL.Hatchery;
 
 namespace Evolution_DLL.World
 {
@@ -25,13 +26,21 @@ namespace Evolution_DLL.World
 
         public void GameStart()
         {
+            AllClear();
             FillLife();
             CreatDNA();
+        }
+
+        private void AllClear()
+        {
+            _thisWorld = new ThisWorld();
+            _round = 0;
         }
 
         public void NextIteration()
         {
             GoAction();
+            GoMutation();
         }
 
         private void FillLife()
@@ -84,7 +93,8 @@ namespace Evolution_DLL.World
         private void GoAction()
         {
             var options = new Specification();
-            while (_round < options.GameLimit)
+            //while (_round < options.GameLimit)
+            while (_thisWorld.StorageElements.GetOrganismsList().Count > 8)
             {
                 var pointer = _round % options.DNAcount;
                 foreach (var organism in _thisWorld.StorageElements.GetOrganismsList())
@@ -104,16 +114,23 @@ namespace Evolution_DLL.World
                 _round++;
                 Application.DoEvents();
             }
+        }
 
-            _round = 0;
+        private void GoMutation()
+        {
+            var mutation = new Mutation(_thisWorld.StorageElements.GetOrganismsList());
+            AllClear();
+            var mutateDNAList = mutation.GoEvolution();
         }
 
         public string GerInfo()
         {
-            return "Живых организмов - " + Convert.ToString(_thisWorld.StorageElements.GetOrganismsList().Count);
+            var s1 = Convert.ToString(_thisWorld.StorageElements.GetOrganismsList().Count);
+            var s2 = Convert.ToString(_thisWorld.StorageElements.GetEatList().Count);
+            return "Живых организмов - " + s1 + "\nЕды - " + s2 + "\nитерация - " + Convert.ToString(_round);
         }
 
-        public List<int> GetFullCells()
+        public List<int> GetFullCells() // мусор
         {
             return _thisWorld.Free();
         }

@@ -46,6 +46,7 @@ namespace Evolution_DLL.Actions
                     var bufOrganism = (Organism)element;
                     if (bufOrganism.Defense)
                     {
+                        thisWorld.DeleteElement(organism);
                         return;
                     }
                     organism.State.UpLifeFromOrganism();

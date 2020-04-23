@@ -66,8 +66,8 @@ namespace Evolution_DLL.World
         internal Element CheckField (Cell cell, int x, int y)
         {
             var options = new Specification();
-            x = cell.Point.X / 10 + x;
-            y = cell.Point.Y / 10 + y;
+            x = cell.Point.X / options.SizeCell + x;
+            y = cell.Point.Y / options.SizeCell + y;
             
             if (x == -1)
             {

@@ -35,6 +35,9 @@
             this.lbState = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.painBox)).BeginInit();
             this.SuspendLayout();
+            // 
+            // painBox
+            // 
             this.painBox.Anchor =
                 ((System.Windows.Forms.AnchorStyles) ((((System.Windows.Forms.AnchorStyles.Top |
                                                          System.Windows.Forms.AnchorStyles.Bottom) |
@@ -43,11 +46,14 @@
             this.painBox.Location = new System.Drawing.Point(1, 1);
             this.painBox.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.painBox.Name = "painBox";
-            this.painBox.Size = new System.Drawing.Size(934, 924);
+            this.painBox.Size = new System.Drawing.Size(1000, 1000);
             this.painBox.TabIndex = 0;
             this.painBox.TabStop = false;
             this.painBox.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
-            this.btCheckPoint.Location = new System.Drawing.Point(996, 47);
+            // 
+            // btCheckPoint
+            // 
+            this.btCheckPoint.Location = new System.Drawing.Point(1038, 12);
             this.btCheckPoint.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btCheckPoint.Name = "btCheckPoint";
             this.btCheckPoint.Size = new System.Drawing.Size(88, 27);
@@ -55,28 +61,40 @@
             this.btCheckPoint.Text = "CheckPoint";
             this.btCheckPoint.UseVisualStyleBackColor = true;
             this.btCheckPoint.Click += new System.EventHandler(this.btCheckPoint_Click);
-            this.btStart.Location = new System.Drawing.Point(996, 93);
+            // 
+            // btStart
+            // 
+            this.btStart.Location = new System.Drawing.Point(1038, 54);
             this.btStart.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btStart.Name = "btStart";
-            this.btStart.Size = new System.Drawing.Size(88, 27);
+            this.btStart.Size = new System.Drawing.Size(88, 45);
             this.btStart.TabIndex = 2;
-            this.btStart.Text = "Start";
+            this.btStart.Text = "Заполнить поле";
             this.btStart.UseVisualStyleBackColor = true;
             this.btStart.Click += new System.EventHandler(this.btStart_Click);
-            this.btNext.Location = new System.Drawing.Point(996, 128);
+            // 
+            // btNext
+            // 
+            this.btNext.Location = new System.Drawing.Point(1038, 105);
             this.btNext.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btNext.Name = "btNext";
-            this.btNext.Size = new System.Drawing.Size(88, 27);
+            this.btNext.Size = new System.Drawing.Size(88, 50);
             this.btNext.TabIndex = 3;
-            this.btNext.Text = "Next";
+            this.btNext.Text = "Старт симуляции";
             this.btNext.UseVisualStyleBackColor = true;
             this.btNext.Click += new System.EventHandler(this.btNext_Click);
-            this.lbState.Location = new System.Drawing.Point(941, 227);
+            // 
+            // lbState
+            // 
+            this.lbState.Location = new System.Drawing.Point(1025, 180);
             this.lbState.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbState.Name = "lbState";
             this.lbState.Size = new System.Drawing.Size(110, 201);
             this.lbState.TabIndex = 4;
             this.lbState.Text = "Information";
+            // 
+            // Evolution
+            // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1148, 993);
@@ -88,7 +106,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "Evolution";
             this.Text = "Evolution";
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Evolution_MouseDown);
             ((System.ComponentModel.ISupportInitialize) (this.painBox)).EndInit();
             this.ResumeLayout(false);
         }

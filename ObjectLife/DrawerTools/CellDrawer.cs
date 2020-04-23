@@ -19,24 +19,13 @@ namespace Evolution_DLL.DrawerTools
 
         private static Brush GetBrush(Element element)
         {
+            var options = new Specification();
             if (element.GetType() == typeof(Eat))
             {
                 return new SolidBrush(Color.Gray);
             }
             var hits = element.State.Life;
-            if (hits > 66)
-            {
-                return new SolidBrush(Color.Green);
-            }
-            if (hits > 33)
-            {
-                return new SolidBrush(Color.Yellow);
-            }
-            if (hits > 0)
-            {
-                return new SolidBrush(Color.Red);
-            }
-            return new SolidBrush(Color.Black);
+            return new SolidBrush(ColorRGB.HSL2RGB(0.3 * hits / options.OrganismMaxLife,1,0.4));
         }
     }
 }

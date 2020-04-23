@@ -27,11 +27,6 @@ namespace Evolution
             drawer.Draw();
         }
 
-        private void Evolution_MouseDown(object sender, MouseEventArgs e)
-        {
-            painBox.Refresh();
-        }
-
         private void btCheckPoint_Click(object sender, System.EventArgs e)
         {
             var b = _world.GetFullCells();

@@ -49,6 +49,8 @@
     <Compile Include="Actions\Mover.cs" />
     <Compile Include="Actions\Scouter.cs" />
     <Compile Include="Actions\Separater.cs" />
+    <Compile Include="DrawerTools\ColorRGB.cs" />
+    <Compile Include="Hatchery\Mutation.cs" />
     <Compile Include="Specification.cs" />
     <Compile Include="DrawerTools\CellDrawer.cs" />
     <Compile Include="DrawerTools\FieldDrawer.cs" />
@@ -74,6 +76,5 @@
     <Compile Include="World\GameProcese.cs" />
     <Compile Include="World\ThisWorld.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
