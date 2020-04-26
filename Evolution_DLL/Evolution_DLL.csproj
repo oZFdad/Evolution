@@ -50,6 +50,7 @@
     <Compile Include="Actions\Scouter.cs" />
     <Compile Include="Actions\Separater.cs" />
     <Compile Include="DrawerTools\ColorRGB.cs" />
+    <Compile Include="DrawerTools\GraphicsDrawer.cs" />
     <Compile Include="Hatchery\Mutation.cs" />
     <Compile Include="Specification.cs" />
     <Compile Include="DrawerTools\CellDrawer.cs" />

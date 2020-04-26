@@ -12,11 +12,17 @@ namespace Evolution_DLL.World
     {
         private ThisWorld _thisWorld;
         private int _round;
-        
+        private int _generation = 0;
+        private List<Gene[]> _mutateDNAList = new List<Gene[]>();
+
         public delegate void EventHandler();
         public event EventHandler EventChange;
+        public event EventHandler EndRound;
+
 
         internal ThisWorld ThisWorld { get => _thisWorld; }
+        public int Generation { get => _generation; }
+        public int Round { get => _round; }
 
         public GameProcese()
         {
@@ -27,8 +33,12 @@ namespace Evolution_DLL.World
         public void GameStart()
         {
             AllClear();
+            _generation++;
             FillLife();
             CreatDNA();
+            GoAction();
+            GoMutation();
+            EndRound?.Invoke();
         }
 
         private void AllClear()
@@ -39,8 +49,8 @@ namespace Evolution_DLL.World
 
         public void NextIteration()
         {
-            GoAction();
-            GoMutation();
+            //GoAction();
+            //GoMutation();
         }
 
         private void FillLife()
@@ -57,6 +67,7 @@ namespace Evolution_DLL.World
                     _thisWorld.GetCell(x, y).Element = eat;
                     eat.State.Cell = _thisWorld.GetCell(x, y);
                     _thisWorld.StorageElements.AddElements(eat);
+                    EventChange?.Invoke();
                 }
                 else
                 {
@@ -73,6 +84,7 @@ namespace Evolution_DLL.World
                     _thisWorld.GetCell(x, y).Element = organism;
                     organism.State.Cell = _thisWorld.GetCell(x, y);
                     _thisWorld.StorageElements.AddElements(organism);
+                    EventChange?.Invoke();
                 }
                 else
                 {
@@ -83,10 +95,20 @@ namespace Evolution_DLL.World
 
         private void CreatDNA()
         {
-            var rnd = new Random();
-            foreach(var organism in _thisWorld.StorageElements.GetOrganismsList())
+            if (_mutateDNAList.Count == 0)
             {
-                organism.CreatDNA(rnd);
+                var rnd = new Random();
+                foreach (var organism in _thisWorld.StorageElements.GetOrganismsList())
+                {
+                    organism.CreatDNA(rnd);
+                }
+            }
+            else
+            {
+                for(var i = 0; i < _mutateDNAList.Count; i++)
+                {
+                    _thisWorld.StorageElements.GetOrganismsList()[i].DNA = _mutateDNAList[i];
+                }
             }
         }
 
@@ -96,7 +118,7 @@ namespace Evolution_DLL.World
             //while (_round < options.GameLimit)
             while (_thisWorld.StorageElements.GetOrganismsList().Count > 8)
             {
-                var pointer = _round % options.DNAcount;
+                var pointer = Round % options.DNAcount;
                 foreach (var organism in _thisWorld.StorageElements.GetOrganismsList())
                 {
                     if (!organism.IsLife())
@@ -119,15 +141,21 @@ namespace Evolution_DLL.World
         private void GoMutation()
         {
             var mutation = new Mutation(_thisWorld.StorageElements.GetOrganismsList());
-            AllClear();
-            var mutateDNAList = mutation.GoEvolution();
+            _mutateDNAList = mutation.GoEvolution();
+        }
+
+        public string GetInfoForSave()
+        {
+            var s3 = Convert.ToString(Generation);
+            return "\nитерация - " + Convert.ToString(Round) + "\nпоколение - " + Convert.ToString(Generation);
         }
 
         public string GerInfo()
         {
             var s1 = Convert.ToString(_thisWorld.StorageElements.GetOrganismsList().Count);
             var s2 = Convert.ToString(_thisWorld.StorageElements.GetEatList().Count);
-            return "Живых организмов - " + s1 + "\nЕды - " + s2 + "\nитерация - " + Convert.ToString(_round);
+            var s3 = Convert.ToString(Generation);
+            return "Живых организмов - " + s1 + "\nЕды - " + s2 + "\nитерация - " + Convert.ToString(Round) + "\nпоколение - " + Convert.ToString(Generation);
         }
 
         public List<int> GetFullCells() // мусор

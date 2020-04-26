@@ -3,7 +3,7 @@ namespace Evolution_DLL
 {
     internal class Specification
     {
-        private int _amountOfFood = 400; //количество еды
+        private int _amountOfFood = 200; //количество еды
         private int _numberOfOrganism = 64; //количество организмов
         private int _countField = 40; // размер поля
         private int _sizeCell = 15;//размер ячейки
@@ -13,7 +13,7 @@ namespace Evolution_DLL
         private int _lifeFromEat = 50;// значение ХП за пищу
         private int _lifeFromOrganism = 100;//значение ХП за съеденый организм
         private int _delay = 0;// задержка отображения
-        private int _gameLimit = 32;// количество иттераций
+        private int _gameLimit = 64;// количество иттераций
         private int _lifeForRound = 2;// ротеря ХП зп ход
         private int _lifeForRoundInDefebse = 1;// потеря ХП зп хо в дефенсе
         private int _numOfMutation = 2;//количество мутаций

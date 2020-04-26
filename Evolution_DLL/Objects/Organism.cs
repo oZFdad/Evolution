@@ -13,7 +13,7 @@ namespace Evolution_DLL.Objects
         public Organism()
         {
             var options = new Specification();
-            _DNA = new Gene[options.DNAcount];
+            DNA = new Gene[options.DNAcount];
             _state = new State();
             _defense = false;
             _scout = false;
@@ -21,12 +21,11 @@ namespace Evolution_DLL.Objects
 
         public bool Defense { get => _defense; set => _defense = value; }
         public bool Scout { get => _scout; set => _scout = value; }
-
-        public Gene[] Dna => _DNA;
+        internal Gene[] DNA { get => _DNA; set => _DNA = value; }
 
         internal void CreatDNA(Random rnd)
         {
-            for(var i = 0; i < _DNA.Length; i++)
+            for(var i = 0; i < DNA.Length; i++)
             {
                 Gene gene;
                 switch(rnd.Next(1, 11))
@@ -65,13 +64,13 @@ namespace Evolution_DLL.Objects
                         gene = new Scout();
                         break;
                 }
-                _DNA[i] = gene;
+                DNA[i] = gene;
             }
         }
 
         internal Gene GetGene (int num)
         {
-            return _DNA[num];
+            return DNA[num];
         }
 
         public bool IsLife()

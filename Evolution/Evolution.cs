@@ -1,18 +1,29 @@
 ﻿using Evolution_DLL.World;
 using Evolution_DLL.DrawerTools;
 using System.Windows.Forms;
+using System.IO;
+using System.Collections.Generic;
 
 namespace Evolution
 {
     public partial class Evolution : Form
     {
         private GameProcese _world = new GameProcese();
+        private List<int[]> _pointsList = new List<int[]>();
         
 
         public Evolution()
         {
             InitializeComponent();
-            _world.EventChange += WorldOnEventChange;
+            //_world.EventChange += WorldOnEventChange;
+            _world.EndRound += () =>
+            {
+                using(var writer = new StreamWriter("C:/Users/Павел/source/repos/Evolution/123.txt", false))
+                {
+                    writer.WriteLine(_world.GetInfoForSave());
+                    _pointsList.Add(new int[2] { _world.Generation, _world.Round });
+                }
+            };
         }
 
         private void WorldOnEventChange()
@@ -35,14 +46,25 @@ namespace Evolution
 
         private void btStart_Click(object sender, System.EventArgs e)
         {
-            _world.GameStart();
-            painBox.Refresh();
+            _pointsList.Clear();
+            var i = 0;
+            while (i != 4096)
+            {
+                _world.GameStart();
+                i++;
+                painBox.Refresh();
+            }
+            painBoxForGraphics.Refresh();
         }
 
         private void btNext_Click(object sender, System.EventArgs e)
         {
             _world.NextIteration();
-            painBox.Refresh();
+        }
+
+        private void painBoxForGraphics_Paint(object sender, PaintEventArgs e)
+        {
+            GraphicsDrawer.Draw(e.Graphics, _pointsList);
         }
     }
 }

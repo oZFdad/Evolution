@@ -14,7 +14,7 @@ namespace Evolution_DLL.Hatchery
         {
             foreach (var organism in mutateList)
             {
-                _mutateList.Add((organism.Dna));
+                _mutateList.Add((organism.DNA));
             }
         }
 
@@ -27,7 +27,7 @@ namespace Evolution_DLL.Hatchery
             {
                 var organism = new Organism();
                 organism.CreatDNA(rnd);
-                _mutateList.Add(organism.Dna);
+                _mutateList.Add(organism.DNA);
             }
 
             foreach (var DNA in _mutateList)
